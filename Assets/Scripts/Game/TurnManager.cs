@@ -114,7 +114,7 @@ public class TurnManager : MonoBehaviour
         yield return StartCoroutine(Player.instance.Attack(enemy));
 
         // player shield 
-        yield return Player.instance.CastShield();
+        yield return StartCoroutine(Player.instance.CastShield());
 
         // enemy attack
         yield return StartCoroutine(enemy.Attack());

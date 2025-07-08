@@ -179,17 +179,17 @@ public class Player : MonoBehaviour
         if (target != null && damage_counter > 0)
         {
             int damage = damage_counter;
-            if(RollCrit())
-            {
-                damage *= crit_multiplier;
-                Debug.Log("Игрок кританул!");
-            }
-            if (effect != null) effect.PlayAttack();
+            bool crit = RollCrit();
+
+            if (crit) damage *= crit_multiplier;
+            if (effect != null) yield return StartCoroutine(effect.PlayAttack(damage, crit));
 
             Debug.Log($"<color=red>ИГРОК УДАРИЛ НА {damage}</color>");
             target.TakeDamage(damage);
+
             damage_counter = 0;
             UpdateUI();
+            yield return new WaitForSeconds(1f);
         }     
     }
 

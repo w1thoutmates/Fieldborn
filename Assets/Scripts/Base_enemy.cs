@@ -123,21 +123,19 @@ public abstract class Base_enemy : MonoBehaviour
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();
 
         int damage = damage_counter;
-        if(RollCrit())
-        {
-            damage *= crit_multiplier;
-            Debug.Log("Враг кританул!");
-        }
+        bool crit = RollCrit();
 
-        if (effect != null) effect.PlayAttack();
+        if (crit) damage *= crit_multiplier;
+        if (effect != null) yield return StartCoroutine(effect.PlayAttack(damage, crit));
 
         Debug.Log($"<color=red>ВРАГ УДАРИЛ НА {damage}</color>");
         Player.instance.TakeDamage(damage);
+
         UpdateUI();
 
-        yield return new WaitForSeconds(1f);
-
         // other actions (soon)
+
+        yield return new WaitForSeconds(1f);
     }
 
     public virtual void Die()

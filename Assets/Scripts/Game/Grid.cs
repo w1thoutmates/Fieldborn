@@ -381,7 +381,7 @@ public class Grid : MonoBehaviour
             var gridSquare = cell.GetComponent<GridSquare>();
             gridSquare.Deactivate();
             gridSquare.ClearOccupied();
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

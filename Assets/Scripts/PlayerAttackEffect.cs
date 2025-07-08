@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerAttackEffect : MonoBehaviour
 {
+    public GameObject damage_popup_prefab;
+    public Transform popup_anchor;
     public GameObject slash_effect_prefab;
     public Transform anchor_position;
-    public float delay_before_damage = 2f;
+    public float delay_before_damage = 0f;
     public bool isPlayer;
 
     private Canvas canvas;
@@ -16,12 +18,7 @@ public class PlayerAttackEffect : MonoBehaviour
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
 
-    public void PlayAttack()
-    {
-        StartCoroutine(PlayAttackCoroutine());
-    }
-
-    private IEnumerator PlayAttackCoroutine()
+    public IEnumerator PlayAttack(int damage, bool isCrit)
     {
         GameObject slash = Instantiate(slash_effect_prefab, anchor_position.position,
                                         Quaternion.identity, canvas.transform);
@@ -29,11 +26,11 @@ public class PlayerAttackEffect : MonoBehaviour
         else slash.GetComponent<SpriteRenderer>().flipX = false;
         Destroy(slash, 0.5f);
 
-        yield return new WaitForSeconds(delay_before_damage);
+        CameraShaker.instance.Shake(0.3f, isCrit ? 0.4f : 0.2f);
 
-        // вылетающая цифра урона
+        GameObject damage_popup = Instantiate(damage_popup_prefab, popup_anchor.position, Quaternion.identity, canvas.transform);
+        damage_popup.GetComponent<DamagePopup>().Setup(damage, isCrit ? new Color(255f / 255f, 172f / 255f, 0f / 255f, 1f) : Color.red, isCrit);
 
-        Player.instance.damage_counter = 0;
-        Player.instance.UpdateUI();
+        yield return new WaitForSeconds(0.1f);
     }
 }
