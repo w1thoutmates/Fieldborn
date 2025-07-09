@@ -26,10 +26,10 @@ public class PlayerAttackEffect : MonoBehaviour
         else slash.GetComponent<SpriteRenderer>().flipX = false;
         Destroy(slash, 0.5f);
 
-        CameraShaker.instance.Shake(0.3f, isCrit ? 0.4f : 0.2f);
+        // CameraShaker.instance.Shake();
 
         GameObject damage_popup = Instantiate(damage_popup_prefab, popup_anchor.position, Quaternion.identity, canvas.transform);
-        damage_popup.GetComponent<DamagePopup>().Setup(damage, isCrit ? new Color(255f / 255f, 172f / 255f, 0f / 255f, 1f) : Color.red, isCrit);
+        damage_popup.GetComponent<DamagePopup>().Setup(damage, isCrit ? Color.red : new Color(255f / 255f, 172f / 255f, 0f / 255f, 1f), isCrit);
 
         yield return new WaitForSeconds(0.1f);
     }

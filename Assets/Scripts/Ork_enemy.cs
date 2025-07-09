@@ -14,7 +14,7 @@ public class Ork_enemy : Base_enemy
     protected override void Start()
     {
         base.Start();
-        damage_counter = Player.instance.current_level + 2;
+        damage_counter = Player.instance.current_level + 1;
         UpdateUI();
     }
 }

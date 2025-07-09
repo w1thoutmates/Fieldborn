@@ -27,7 +27,7 @@ public class DamagePopup : MonoBehaviour
 
     public void Setup(int value, Color color, bool isCrit = false)
     {
-        text_mesh.text = isCrit ? $"<size=120%>CRITICAL!</size>\n{value}" : value.ToString();
+        text_mesh.text = isCrit ? $"<size=110%>CRITICAL!</size>\n{value}" : value.ToString();
         text_mesh.color = color;
         text_color = color;
     }

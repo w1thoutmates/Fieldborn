@@ -126,10 +126,12 @@ public abstract class Base_enemy : MonoBehaviour
         bool crit = RollCrit();
 
         if (crit) damage *= crit_multiplier;
-        if (effect != null) yield return StartCoroutine(effect.PlayAttack(damage, crit));
 
-        Debug.Log($"<color=red>ÂĞÀÃ ÓÄÀĞÈË ÍÀ {damage}</color>");
-        Player.instance.TakeDamage(damage);
+        int final_damage = Player.instance.TakeDamage(damage);
+
+        if (effect != null) yield return StartCoroutine(effect.PlayAttack(final_damage, crit));
+
+        Debug.Log($"<color=red>ÂĞÀÃ ÓÄÀĞÈË ÍÀ {final_damage}</color>");
 
         UpdateUI();
 

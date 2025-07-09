@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void TakeDamage(float damage)
+    public int TakeDamage(float damage)
     {
         int int_damage = Mathf.RoundToInt(damage);
 
@@ -117,14 +117,16 @@ public class Player : MonoBehaviour
         active_shield -= shield_reduction;
         Debug.Log($"<color=blue>»√–Œ  œŒ√ÀŒ“»À {shield_reduction} ”–ŒÕ¿ Ÿ»“ŒÃ</color>");
 
-        int damage_dif = int_damage - shield_reduction;
-        current_health -= damage_dif;
+        int final_damage = int_damage - shield_reduction;
+        current_health -= final_damage;
 
         UpdateUI();
         health_bar_instance?.UpdateHealthBar(current_health);
         UpdateHealthBarText();
 
         if (current_health <= 0) Die();
+        
+        return final_damage;
     }
 
     public void UpdateHealthBarText()
