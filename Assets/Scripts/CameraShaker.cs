@@ -23,6 +23,11 @@ public class CameraShaker : MonoBehaviour
 
     private System.Collections.IEnumerator ShakeRoutine()
     {
+        if (PauseManager.isPaused)
+        {
+            yield return new WaitWhile(() => PauseManager.isPaused);
+        }
+
         float timer = 0f;
 
         while(timer < shake_duration)

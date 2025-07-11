@@ -34,6 +34,8 @@ public class DamagePopup : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.isPaused) return; 
+
         timer += Time.deltaTime;
 
         transform.position += random_offset * move_speed * Time.deltaTime;

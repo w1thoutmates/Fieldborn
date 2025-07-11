@@ -5,8 +5,7 @@ public class ChoiceMenu : MonoBehaviour
 {
     private Player p;
     public event Action OnChoiceMade;
-
-
+    
     private void Awake()
     {
         p = Player.instance;

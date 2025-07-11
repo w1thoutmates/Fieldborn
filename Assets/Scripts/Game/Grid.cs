@@ -235,10 +235,10 @@ public class Grid : MonoBehaviour
                     GameObject choice_menu_instance = Instantiate(choice_menu, transform.position, Quaternion.identity, canvas.transform);
                     choice_menu_instance.SetActive(false);
                     choice_queue.Enqueue(choice_menu_instance);
-
+                    
                     if (!isChoosing)
                         StartCoroutine(ChoiceQueue());
-
+                    
                     Debug.Log("Íè×åÃî Íå ÄîÌèÍèÐóÅò");
                     // Give possible for player to select the counter++
                 }
@@ -273,6 +273,8 @@ public class Grid : MonoBehaviour
 
     private System.Collections.IEnumerator ChoiceQueue()
     {
+        PauseManager.Pause();
+
         isChoosing = true;
 
         while (choice_queue.Count > 0)
@@ -288,9 +290,10 @@ public class Grid : MonoBehaviour
             yield return new WaitUntil(() => choice_made);
 
             Destroy(current_choice);
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.1f);
         }
         isChoosing = false;
+        PauseManager.Resume();
     }
 
     private bool DoesShapeMatchGrid(Shape shape, List<int> selectedSquares)
@@ -343,6 +346,9 @@ public class Grid : MonoBehaviour
 
     private IEnumerator AnimateSquaresToCounter(int[] squareIndexes, Color dominantColor, Vector3 targetPosition)
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         List<GameObject> animatedSquares = new List<GameObject>();
 
         foreach (var index in squareIndexes)
@@ -409,6 +415,9 @@ public class Grid : MonoBehaviour
 
     private IEnumerator ClearBoardWithDelay()
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         float delay_btw_fall = 0.008f;
 
         foreach (var cell in cells)
@@ -429,6 +438,9 @@ public class Grid : MonoBehaviour
 
     private IEnumerator FallSquare(GridSquare grid_square)
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         GameObject animated_square = new GameObject("FlyingSquare");
         Image img = animated_square.AddComponent<Image>();
         img.color = grid_square.activeImage.color;

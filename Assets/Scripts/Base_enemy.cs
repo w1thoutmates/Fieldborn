@@ -27,7 +27,6 @@ public abstract class Base_enemy : MonoBehaviour
     protected float crit_chance = 0.10f;
     protected int crit_multiplier = 2;
 
-
     protected virtual void Awake()
     {
         
@@ -109,6 +108,9 @@ public abstract class Base_enemy : MonoBehaviour
     }
     private IEnumerator EnemyTurnDelay()
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         GameObject shapes_on_scene = GameObject.Find("Shapes");
         shapes_on_scene.gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);
@@ -118,6 +120,9 @@ public abstract class Base_enemy : MonoBehaviour
 
     public virtual IEnumerator Attack()
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         if (damage_counter <= 0) yield break;
 
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();

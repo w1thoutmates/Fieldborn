@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager instance;
@@ -59,6 +58,8 @@ public class TurnManager : MonoBehaviour
 
     public void EndTurn()
     {
+        if (PauseManager.isPaused) return;
+
         endTunrBtn.gameObject.SetActive(false);
 
         currentTurn++;
@@ -104,6 +105,11 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator EndRound()
     {
+        if (PauseManager.isPaused)
+        {
+            yield return new WaitWhile(() => PauseManager.isPaused);
+        }
+
         GameObject shapes_on_scene = GameObject.Find("Shapes");
         shapes_on_scene.gameObject.SetActive(false);
 

@@ -154,7 +154,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         GameEvents.SetShapeInactive -= SetShapeInactive;
     }
 
-
     private float GetYPositionForShape(ShapeData shapeData, int row, Vector2 moveDistance)
     {
         float shiftOnY = 0;
@@ -289,16 +288,22 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        if (PauseManager.isPaused) return;
     }
     
     public void OnPointerUp(PointerEventData eventData)
     {
-
+        if (PauseManager.isPaused) return;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (PauseManager.isPaused)
+        {
+            GameEvents.MoveShapeToStartPosition();
+            return;
+        }
+
         if (!TurnManager.instance.IsPlayerTurn()) return;
         if (!Player.instance.CanPlaceShape()) return;     
 
@@ -307,6 +312,12 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (PauseManager.isPaused)
+        {
+            GameEvents.MoveShapeToStartPosition();
+            return;
+        }
+
         if (!TurnManager.instance.IsPlayerTurn()) return;
         if (!Player.instance.CanPlaceShape()) return;
 
@@ -322,6 +333,8 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (PauseManager.isPaused) return;
+
         this.GetComponent<RectTransform>().localScale = shapeStartScale;
 
         //GameEvents.MoveShapeToStartPosition();
@@ -334,7 +347,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        if (PauseManager.isPaused) return;
     }
 
     private void MoveShapeToStartPosition()
@@ -363,7 +376,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         }
     }
 }
-
 
 public static class ShapeColors
 {

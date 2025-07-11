@@ -28,6 +28,9 @@ public class health_bar : MonoBehaviour
 
     private IEnumerator UpdateEaseHealthBar(float targetHealth)
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         while (Mathf.Abs(ease_health_slider.value - targetHealth) > 0.01f)
         {
             ease_health_slider.value = Mathf.Lerp(ease_health_slider.value, targetHealth,

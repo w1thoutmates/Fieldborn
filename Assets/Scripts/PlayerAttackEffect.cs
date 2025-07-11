@@ -20,6 +20,11 @@ public class PlayerAttackEffect : MonoBehaviour
 
     public IEnumerator PlayAttack(int damage, bool isCrit)
     {
+        if (PauseManager.isPaused)
+        {
+            yield return new WaitWhile(() => PauseManager.isPaused);
+        }
+
         GameObject slash = Instantiate(slash_effect_prefab, anchor_position.position,
                                         Quaternion.identity, canvas.transform);
         if (isPlayer) slash.GetComponent<SpriteRenderer>().flipX = true;

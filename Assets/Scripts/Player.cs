@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
     // Механику уклонения добавить в игру
     // Добавить - если нет предметов для использования и все фигуры поставлены - ход автоматически заканчивается
     // или включать эту функцию по кнопке
-    // Добавить вывод текущего раунда, текущего хода, того кто ходит в интефрейс
 
     private void Awake()
     {
@@ -174,6 +173,9 @@ public class Player : MonoBehaviour
 
     public IEnumerator Attack(Base_enemy target)
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         if (damage_counter <= 0) yield break;
 
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();
@@ -197,6 +199,9 @@ public class Player : MonoBehaviour
 
     public IEnumerator HealSelf()
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         if (heal_counter <= 0) yield break;
 
         current_health = Mathf.Min(max_health, current_health + heal_counter);
@@ -211,6 +216,9 @@ public class Player : MonoBehaviour
 
     public IEnumerator CastShield()
     {
+        if (PauseManager.isPaused)
+            yield return new WaitWhile(() => PauseManager.isPaused);
+
         if (shield_counter <= 0) yield break;
 
         // animation
