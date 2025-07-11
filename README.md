@@ -39,4 +39,6 @@ Each round consists of alternating turns between the player and the enemy. After
 - 🛍️ Item system and shop
 - 👁️ Enemy behaviors & patterns
 
+## *game screenshot*
+![game screenshot](https://github.com/w1thoutmates/Fieldborn/blob/main/Assets/gameplay_screenshot.png)
 and now thats all
