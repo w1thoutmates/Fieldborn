@@ -6,6 +6,8 @@ using System.Linq;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Multiplayer.Center.Common;
+using System;
 
 public class Grid : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class Grid : MonoBehaviour
     public int rows = 8;
     public float cellSize = 1f;
     public GameObject cellPrefab;
-    
+
     private List<GameObject> cells = new List<GameObject>();
     private LineIndicator lineIndicator;
     public float additionalYOffset = 1f;
@@ -23,9 +25,12 @@ public class Grid : MonoBehaviour
 
     private Canvas canvas;
 
+    private Queue<GameObject> choice_queue = new Queue<GameObject>();
+    private bool isChoosing = false;
+
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -49,7 +54,7 @@ public class Grid : MonoBehaviour
     {
         lineIndicator = GetComponent<LineIndicator>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        CreateGrid();    
+        CreateGrid();
     }
 
     private void CreateGrid()
@@ -66,7 +71,7 @@ public class Grid : MonoBehaviour
 
         for (var row = 0; row < rows; row++)
         {
-            for(var col = 0; col < columns; col++)
+            for (var col = 0; col < columns; col++)
             {
                 Vector3 position = new Vector3(col * cellSize - offsetX, -row * cellSize + offsetY + additionalYOffset, 0f);
                 cells.Add(Instantiate(cellPrefab, position, Quaternion.identity, transform) as GameObject);
@@ -114,7 +119,7 @@ public class Grid : MonoBehaviour
                 }
             }
 
-            if (shapeLeft == 0 && Player.instance.CanPlaceShape()) 
+            if (shapeLeft == 0 && Player.instance.CanPlaceShape())
             {
                 GameEvents.RequestNewShapes();
             }
@@ -134,18 +139,18 @@ public class Grid : MonoBehaviour
     void CheckIfAnyLineIsCompleted()
     {
         List<int[]> lines = new List<int[]>();
-        
+
         // for columns
         foreach (var column in lineIndicator.columnIndexes)
         {
             lines.Add(lineIndicator.GetVerticalLine(column));
         }
-        
+
         // for rows
-        for(var row = 0; row < 8;  row++)
+        for (var row = 0; row < 8; row++)
         {
             List<int> data = new List<int>(8);
-            for(var index = 0; index < 8; index++)
+            for (var index = 0; index < 8; index++)
             {
                 data.Add(lineIndicator.line_data[row, index]);
             }
@@ -155,7 +160,7 @@ public class Grid : MonoBehaviour
 
         var completedLines = CheckIfSquaresAreCompleted(lines);
 
-        if(completedLines > 2)
+        if (completedLines > 2)
         {
             // any bonus
         }
@@ -169,7 +174,7 @@ public class Grid : MonoBehaviour
 
         var linesCompleted = 0;
 
-        foreach(var line in data)
+        foreach (var line in data)
         {
             var lineCompleted = true;
 
@@ -177,7 +182,7 @@ public class Grid : MonoBehaviour
             int greenCounter = 0;
             int blueCounter = 0;
 
-            foreach(var squareIndex in line)
+            foreach (var squareIndex in line)
             {
                 var comp = cells[squareIndex].GetComponent<GridSquare>();
                 if (comp.SquareOccupied == false)
@@ -194,7 +199,7 @@ public class Grid : MonoBehaviour
                     blueCounter++;
             }
 
-            if(lineCompleted)
+            if (lineCompleted)
             {
                 Vector3 targetPosition = Vector3.zero;
 
@@ -207,7 +212,7 @@ public class Grid : MonoBehaviour
                     Player.instance.UpdateUI();
                     // Red-Dominated color bonus
                 }
-                else if(greenCounter > redCounter && greenCounter > blueCounter)
+                else if (greenCounter > redCounter && greenCounter > blueCounter)
                 {
                     Debug.Log("<color=green>«≈À≈Õ€… ƒŒÃ»Õ»–”≈“!!!</color>");
                     targetPosition = Player.instance.heal_counter_text.transform.position;
@@ -216,7 +221,7 @@ public class Grid : MonoBehaviour
                     Player.instance.UpdateUI();
                     // Green-Dominated color bonus
                 }
-                else if(blueCounter > redCounter && blueCounter > greenCounter)
+                else if (blueCounter > redCounter && blueCounter > greenCounter)
                 {
                     Debug.Log("<color=blue>C»Õ»… ƒŒÃ»Õ»–”≈“!!!</color>");
                     targetPosition = Player.instance.shield_counter_text.transform.position;
@@ -227,7 +232,13 @@ public class Grid : MonoBehaviour
                 }
                 else
                 {
-                    choice_menu.gameObject.SetActive(true);
+                    GameObject choice_menu_instance = Instantiate(choice_menu, transform.position, Quaternion.identity, canvas.transform);
+                    choice_menu_instance.SetActive(false);
+                    choice_queue.Enqueue(choice_menu_instance);
+
+                    if (!isChoosing)
+                        StartCoroutine(ChoiceQueue());
+
                     Debug.Log("ÕË◊Â√Ó ÕÂ ƒÓÃËÕË–Û≈Ú");
                     // Give possible for player to select the counter++
                 }
@@ -239,7 +250,7 @@ public class Grid : MonoBehaviour
         foreach (var line in completedLines)
         {
             var completed = false;
-            foreach(var squareIndex in line)
+            foreach (var squareIndex in line)
             {
                 var comp = cells[squareIndex].GetComponent<GridSquare>();
                 comp.Deactivate();
@@ -252,12 +263,34 @@ public class Grid : MonoBehaviour
                 comp.ClearOccupied();
             }
 
-            if(completed)
+            if (completed)
             {
                 linesCompleted++;
             }
         }
         return linesCompleted;
+    }
+
+    private System.Collections.IEnumerator ChoiceQueue()
+    {
+        isChoosing = true;
+
+        while (choice_queue.Count > 0)
+        {
+            GameObject current_choice = choice_queue.Dequeue();
+            current_choice.SetActive(true);
+
+            bool choice_made = false;
+
+            ChoiceMenu menu = current_choice.GetComponent<ChoiceMenu>();
+            menu.OnChoiceMade += () => { choice_made = true; };
+
+            yield return new WaitUntil(() => choice_made);
+
+            Destroy(current_choice);
+            yield return new WaitForSeconds(0.4f);
+        }
+        isChoosing = false;
     }
 
     private bool DoesShapeMatchGrid(Shape shape, List<int> selectedSquares)
@@ -376,12 +409,50 @@ public class Grid : MonoBehaviour
 
     private IEnumerator ClearBoardWithDelay()
     {
+        float delay_btw_fall = 0.008f;
+
         foreach (var cell in cells)
         {
-            var gridSquare = cell.GetComponent<GridSquare>();
-            gridSquare.Deactivate();
-            gridSquare.ClearOccupied();
-            yield return new WaitForSeconds(0.01f);
+            var grid_square = cell.GetComponent<GridSquare>();
+
+            if (grid_square.SquareOccupied)
+            {
+                grid_square.Deactivate();
+                grid_square.ClearOccupied();
+
+                StartCoroutine(FallSquare(grid_square));
+
+                yield return new WaitForSeconds(delay_btw_fall);
+            }
         }
     }
+
+    private IEnumerator FallSquare(GridSquare grid_square)
+    {
+        GameObject animated_square = new GameObject("FlyingSquare");
+        Image img = animated_square.AddComponent<Image>();
+        img.color = grid_square.activeImage.color;
+        img.sprite = grid_square.activeImage.sprite;
+        animated_square.transform.SetParent(canvas.transform, false);
+        animated_square.transform.position = grid_square.transform.position;
+        animated_square.transform.localScale = Vector3.one;
+
+        Vector3 start_position = animated_square.transform.position;
+        Vector3 end_position = start_position + Vector3.down * 8f;
+
+        float duration = 0.15f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            animated_square.transform.position = Vector3.Lerp(start_position, end_position, t);
+            img.color = new Color(img.color.r, img.color.g, img.color.b, 1f - t);
+            yield return null;
+        }
+
+        Destroy(animated_square);
+    }
+
 }

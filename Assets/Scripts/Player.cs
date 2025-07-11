@@ -232,8 +232,4 @@ public class Player : MonoBehaviour
         health_bar_instance = null;
         // GAME OVER Screen what ever.
     }
-
-    public void IncDamageCounter() { damage_counter += current_level; choice_menu.gameObject.SetActive(false); UpdateUI(); }
-    public void IncHealCounter() { heal_counter += current_level; choice_menu.gameObject.SetActive(false); UpdateUI(); }
-    public void IncShieldCounter() { shield_counter += current_level; choice_menu.gameObject.SetActive(false); UpdateUI(); }
 }
