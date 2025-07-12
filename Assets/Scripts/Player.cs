@@ -178,6 +178,9 @@ public class Player : MonoBehaviour
 
         if (damage_counter <= 0) yield break;
 
+        TurnManager.instance.turn_text.text = $"<size=80%>Èãğîê àòàêóåò</size>";
+        TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
+
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();
 
         if (target != null && damage_counter > 0)
@@ -188,7 +191,6 @@ public class Player : MonoBehaviour
             if (crit) damage *= crit_multiplier;
             if (effect != null) yield return StartCoroutine(effect.PlayAttack(damage, crit));
 
-            Debug.Log($"<color=red>ÈÃĞÎÊ ÓÄÀĞÈË ÍÀ {damage}</color>");
             target.TakeDamage(damage);
 
             damage_counter = 0;
@@ -204,10 +206,14 @@ public class Player : MonoBehaviour
 
         if (heal_counter <= 0) yield break;
 
+        TurnManager.instance.turn_text.text = $"<size=80%>Èãğîê ëå÷èòñÿ</size>";
+        TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
+
         current_health = Mathf.Min(max_health, current_health + heal_counter);
         health_bar_instance.UpdateHealthBar(current_health);
         UpdateHealthBarText();
-        Debug.Log($"<color=green>ÈÃĞÎÊ ÈÇËÅ×ÈËÑß ÍÀ {heal_counter}</color>");
+
+        // heal popup
 
         heal_counter = 0;
         UpdateUI();
@@ -221,6 +227,11 @@ public class Player : MonoBehaviour
 
         if (shield_counter <= 0) yield break;
 
+        TurnManager.instance.turn_text.text = $"<size=80%>Ïğèìåíÿåòñÿ ùèò</size>";
+        TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
+
+        // shield popup
+
         // animation
 
         /* yield return new WaitForSeconds(0.5f); delay for animation */
@@ -229,7 +240,6 @@ public class Player : MonoBehaviour
         shield_counter = 0;
         UpdateUI();
 
-        Debug.Log($"<color=blue>ÈÃĞÎÊ ÊÀÑÒÓÅÒ ÙÈÒ ({active_shield})</color>");
         yield return new WaitForSeconds(1f);
     }
 

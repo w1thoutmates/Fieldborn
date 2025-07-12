@@ -125,6 +125,9 @@ public abstract class Base_enemy : MonoBehaviour
 
         if (damage_counter <= 0) yield break;
 
+        TurnManager.instance.turn_text.text = $"<size=80%>Âğàã àòàêóåò</size>";
+        TurnManager.instance.turn_text.color = new Color(255f / 255f, 91f / 255f, 76f / 255f, 1f);
+
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();
 
         int damage = damage_counter;
@@ -135,8 +138,6 @@ public abstract class Base_enemy : MonoBehaviour
         int final_damage = Player.instance.TakeDamage(damage);
 
         if (effect != null) yield return StartCoroutine(effect.PlayAttack(final_damage, crit));
-
-        Debug.Log($"<color=red>ÂĞÀÃ ÓÄÀĞÈË ÍÀ {final_damage}</color>");
 
         UpdateUI();
 

@@ -2911,6 +2911,7 @@ MonoBehaviour:
   rows: 8
   cellSize: 0.95
   cellPrefab: {fileID: 5209688301334619469, guid: 82a5f91480c6f264f9651b06b262faac, type: 3}
+  destroy_square_prefab: {fileID: 1710698373948232674, guid: 691b142b4b3c7224bbdd616f00d73f06, type: 3}
   additionalYOffset: 1.1
   choice_menu: {fileID: 5356569700406574414, guid: c460dd9d6e8a3c1499b670468e892471, type: 3}
 --- !u!114 &2128337627

@@ -17,6 +17,7 @@ public class Grid : MonoBehaviour
     public int rows = 8;
     public float cellSize = 1f;
     public GameObject cellPrefab;
+    public GameObject destroy_square_prefab;
 
     private List<GameObject> cells = new List<GameObject>();
     private LineIndicator lineIndicator;
@@ -254,6 +255,9 @@ public class Grid : MonoBehaviour
             {
                 var comp = cells[squareIndex].GetComponent<GridSquare>();
                 comp.Deactivate();
+                Instantiate(destroy_square_prefab, comp.transform.position, Quaternion.identity)
+                            .GetComponent<SquareExplosionEffect>()
+                            .Play(comp.activeImage.color);
                 completed = true;
             }
 
