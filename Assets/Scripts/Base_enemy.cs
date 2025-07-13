@@ -128,6 +128,8 @@ public abstract class Base_enemy : MonoBehaviour
         TurnManager.instance.turn_text.text = $"<size=80%>Враг атакует</size>";
         TurnManager.instance.turn_text.color = new Color(255f / 255f, 91f / 255f, 76f / 255f, 1f);
 
+        // обработка случая, в котором во время атаки цель может погибнуть
+
         PlayerAttackEffect effect = GetComponent<PlayerAttackEffect>();
 
         int damage = damage_counter;
