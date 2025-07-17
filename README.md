@@ -24,7 +24,7 @@ Each round consists of alternating turns between the player and the enemy. After
 
 ## 🔧 Tech Stack
 
-- Unity 6
+- Unity 6 (6000.0.39f1)
 - C#
 - Custom turn manager and battle system
 - Modular and scalable design
