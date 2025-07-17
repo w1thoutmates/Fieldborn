@@ -124,8 +124,25 @@ public class Player : MonoBehaviour
         UpdateHealthBarText();
 
         if (current_health <= 0) Die();
-        
+
+        EventBus.Instance.playerTakenDamage?.Invoke(int_damage);
         return final_damage;
+    }
+
+    public void TakePureDamage(float damage)
+    {
+        current_health -= Mathf.RoundToInt(damage);
+        UpdateUI();
+        health_bar_instance?.UpdateHealthBar(current_health);
+        UpdateHealthBarText();
+
+        if (current_health <= 0)
+        {
+            current_health = 0;
+            Die();
+        }
+
+        Debug.Log($"<color=red>ИГРОК ПОЛУЧИЛ {damage} чистого урона от отражения</color>");
     }
 
     public void UpdateHealthBarText()

@@ -99,6 +99,24 @@ public abstract class Base_enemy : MonoBehaviour
             current_health = 0;
             Die();
         }
+
+        EventBus.Instance.enemyTakenDamage?.Invoke((int)damage);
+    }
+
+    public virtual void TakePureDamage(float damage)
+    {
+        current_health -= damage;
+        UpdateUI();
+        health_bar_instance?.UpdateHealthBar(current_health);
+        UpdateHealthBarText();
+
+        if (current_health <= 0)
+        {
+            current_health = 0;
+            Die();
+        }
+
+        Debug.Log($"<color=red>ВРАГ ПОЛУЧИЛ {damage} чистого урона от отражения</color>");
     }
 
     public virtual void TurnActions()

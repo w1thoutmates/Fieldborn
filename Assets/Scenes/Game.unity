@@ -981,6 +981,7 @@ GameObject:
   - component: {fileID: 257736922}
   - component: {fileID: 257736923}
   - component: {fileID: 257736924}
+  - component: {fileID: 257736926}
   - component: {fileID: 257736925}
   m_Layer: 5
   m_Name: enemy_ork
@@ -1076,6 +1077,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &257736926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257736921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d85ed9a65a5df1478095d19d1d5ac5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 2048f8c1a320d6e41bceb37e4c0902bf, type: 2}
 --- !u!1 &270879319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,6 +2218,7 @@ GameObject:
   - component: {fileID: 802681029}
   - component: {fileID: 802681032}
   - component: {fileID: 802681031}
+  - component: {fileID: 802681033}
   - component: {fileID: 802681030}
   m_Layer: 5
   m_Name: main_char
@@ -2307,6 +2323,20 @@ MonoBehaviour:
   current_exp: 1
   max_level: 10
   current_level: 1
+--- !u!114 &802681033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802681028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d85ed9a65a5df1478095d19d1d5ac5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 2048f8c1a320d6e41bceb37e4c0902bf, type: 2}
 --- !u!1 &805836520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,6 +4695,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683376043}
   m_CullTransparentMesh: 1
+--- !u!1 &1690319702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690319704}
+  - component: {fileID: 1690319703}
+  m_Layer: 0
+  m_Name: EventBus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1690319703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690319702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a59bcd2fa441714ab17c27ab9a11672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1690319704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690319702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22919747, y: -0.50100374, z: -2.2166579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725528828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5802,3 +5876,4 @@ SceneRoots:
   - {fileID: 382724484}
   - {fileID: 2085003788}
   - {fileID: 270879321}
+  - {fileID: 1690319704}
