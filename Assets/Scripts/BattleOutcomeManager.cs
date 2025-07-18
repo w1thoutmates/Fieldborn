@@ -30,6 +30,15 @@ public class BattleOutcomeManager : MonoBehaviour
 
     public void RertyButton()
     {
+        PauseManager.instance = null;
+        TurnManager.instance = null;
+        Grid.instance = null;
+        Player.instance = null;
+        BattleOutcomeManager.instance = null;
+        EventBus.Instance = null;
+        
+        PauseManager.Resume();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
