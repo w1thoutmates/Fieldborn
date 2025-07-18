@@ -27,18 +27,16 @@ public abstract class Base_enemy : MonoBehaviour
     protected float crit_chance = 0.10f;
     protected int crit_multiplier = 2;
 
-    protected virtual void Awake()
-    {
-        
-    }
+    protected virtual void Awake() { }
 
     protected virtual void Start()
     {
         current_health = max_health;
         current_level = Player.instance.current_level;
 
-        var canvasTransform = GameObject.Find("Canvas").transform;
-        GameObject hb = Instantiate(health_bar_prefab, health_bar_anchor.position, Quaternion.identity, canvasTransform);
+        GameObject hb = Instantiate(health_bar_prefab, health_bar_anchor);
+        hb.transform.localPosition = Vector3.zero;
+
         health_bar_instance = hb.GetComponent<health_bar>();
         health_bar_instance.SetMaxHealth(max_health);
         health_bar_instance.UpdateHealthBar(current_health);

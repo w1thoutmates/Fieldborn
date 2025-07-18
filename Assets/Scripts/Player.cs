@@ -68,8 +68,9 @@ public class Player : MonoBehaviour
     {
         current_health = max_health;
 
-        var canvasTransform = GameObject.Find("Canvas").transform;
-        GameObject hb = Instantiate(health_bar_prefab, health_bar_anchor.position, Quaternion.identity, canvasTransform);
+        GameObject hb = Instantiate(health_bar_prefab, health_bar_anchor);
+        hb.transform.localPosition = Vector3.zero;
+
         health_bar_instance = hb.GetComponent<health_bar>();
         health_bar_instance.SetMaxHealth(max_health);
         health_bar_instance.UpdateHealthBar(current_health);
