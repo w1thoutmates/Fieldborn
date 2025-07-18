@@ -16,7 +16,7 @@ public abstract class Base_enemy : MonoBehaviour
     public GameObject health_bar_prefab;
     public Transform health_bar_anchor;
     protected TextMeshProUGUI health_text;
-    protected health_bar health_bar_instance;
+    [HideInInspector]public health_bar health_bar_instance;
 
     [Header("leveling")]
     public float max_exp;
@@ -171,9 +171,10 @@ public abstract class Base_enemy : MonoBehaviour
         Destroy(gameObject);
         Destroy(health_bar_instance.gameObject);
         health_bar_instance = null;
+        BattleOutcomeManager.instance.ShowWinScreen();
     }
 
-    protected virtual void UpdateHealthBarText()
+    public virtual void UpdateHealthBarText()
     {
         health_text.text = current_health.ToString() + "/" + max_health.ToString();
     }

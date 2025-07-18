@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public GameObject health_bar_prefab;
     public Transform health_bar_anchor;
     private TextMeshProUGUI health_text;
+    public Transform popup_anchor;
+    public GameObject popup_prefab;
     [HideInInspector]public health_bar health_bar_instance;
 
     [Header("leveling")]
@@ -230,7 +232,8 @@ public class Player : MonoBehaviour
         health_bar_instance.UpdateHealthBar(current_health);
         UpdateHealthBarText();
 
-        // heal popup
+        GameObject heal_popup = Instantiate(popup_prefab, popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
+        heal_popup.GetComponent<DamagePopup>().Setup(heal_counter, Color.green);
 
         heal_counter = 0;
         UpdateUI();
@@ -247,7 +250,8 @@ public class Player : MonoBehaviour
         TurnManager.instance.turn_text.text = $"<size=80%>Применяется щит</size>";
         TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
 
-        // shield popup
+        GameObject shield_popup = Instantiate(popup_prefab, popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
+        shield_popup.GetComponent<DamagePopup>().Setup(shield_counter, Color.blue);
 
         // animation
 
@@ -265,6 +269,6 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
         Destroy(health_bar_instance.gameObject);
         health_bar_instance = null;
-        // GAME OVER Screen what ever.
+        BattleOutcomeManager.instance.ShowLoseScreen();
     }
 }

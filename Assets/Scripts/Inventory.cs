@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Item[] items;
+    public Item[] items = new Item[8];
 
     private Player pl;
     private Base_enemy en;
