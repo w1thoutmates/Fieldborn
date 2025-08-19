@@ -91,6 +91,8 @@ public class InventoryUI : MonoBehaviour
 
     public void UsePlayerItem(int visible_index)
     {
+        if (!TurnManager.instance.IsPlayerTurn()) return;
+
         int item_index = current_index + visible_index;
         if (item_index >= inventory.items.Length) return;
 
@@ -118,6 +120,8 @@ public class InventoryUI : MonoBehaviour
 
     public void UseEnemyItem(int visible_index)
     {
+        if (!TurnManager.instance.IsEnemyTurn()) return;
+
         int item_index = current_index + visible_index;
         if (item_index >= inventory.items.Length) return;
 

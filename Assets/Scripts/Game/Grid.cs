@@ -192,11 +192,11 @@ public class Grid : MonoBehaviour
                 }
 
                 Color squareColor = comp.activeImage.color;
-                if (squareColor == Color.red)
+                if (squareColor == new Color(229f / 255f, 115f / 255f, 115f / 255f))
                     redCounter++;
-                if (squareColor == Color.green)
+                if (squareColor == new Color(129f / 255f, 199f / 255f, 132f / 255f))
                     greenCounter++;
-                if (squareColor == Color.blue)
+                if (squareColor == new Color(100f / 255f, 181f / 255f, 246f / 255f))
                     blueCounter++;
             }
 
@@ -208,7 +208,7 @@ public class Grid : MonoBehaviour
                 {
                     Debug.Log("<color=red> –¿—Õ€… ƒŒÃ»Õ»–”≈“!!!</color>");
                     targetPosition = Player.instance.damage_counter_text.transform.position;
-                    StartCoroutine(AnimateSquaresToCounter(line, Color.red, targetPosition));
+                    StartCoroutine(AnimateSquaresToCounter(line, new Color(229f/255f, 115f/255f, 115f/255f), targetPosition));
                     Player.instance.damage_counter++;
                     Player.instance.UpdateUI();
                     // Red-Dominated color bonus
@@ -217,7 +217,7 @@ public class Grid : MonoBehaviour
                 {
                     Debug.Log("<color=green>«≈À≈Õ€… ƒŒÃ»Õ»–”≈“!!!</color>");
                     targetPosition = Player.instance.heal_counter_text.transform.position;
-                    StartCoroutine(AnimateSquaresToCounter(line, Color.green, targetPosition));
+                    StartCoroutine(AnimateSquaresToCounter(line, new Color(129f/255f, 199f/255f, 132f/255f), targetPosition));
                     Player.instance.heal_counter++;
                     Player.instance.UpdateUI();
                     // Green-Dominated color bonus
@@ -226,7 +226,7 @@ public class Grid : MonoBehaviour
                 {
                     Debug.Log("<color=blue>C»Õ»… ƒŒÃ»Õ»–”≈“!!!</color>");
                     targetPosition = Player.instance.shield_counter_text.transform.position;
-                    StartCoroutine(AnimateSquaresToCounter(line, Color.blue, targetPosition));
+                    StartCoroutine(AnimateSquaresToCounter(line, new Color(100f/255f, 181f/255f, 246f/255f), targetPosition));
                     Player.instance.shield_counter++;
                     Player.instance.UpdateUI();
                     // Blue-Dominated color bonus
@@ -350,8 +350,8 @@ public class Grid : MonoBehaviour
 
     private IEnumerator AnimateSquaresToCounter(int[] squareIndexes, Color dominantColor, Vector3 targetPosition)
     {
-        if (PauseManager.isPaused)
-            yield return new WaitWhile(() => PauseManager.isPaused);
+        //if (PauseManager.isPaused)
+        //    yield return new WaitWhile(() => PauseManager.isPaused);
 
         List<GameObject> animatedSquares = new List<GameObject>();
 
@@ -470,5 +470,4 @@ public class Grid : MonoBehaviour
 
         Destroy(animated_square);
     }
-
 }

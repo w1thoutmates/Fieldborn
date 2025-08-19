@@ -234,7 +234,7 @@ public class Player : MonoBehaviour
         UpdateHealthBarText();
 
         GameObject heal_popup = Instantiate(popup_prefab, popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
-        heal_popup.GetComponent<DamagePopup>().Setup(heal_counter, Color.green);
+        heal_popup.GetComponent<DamagePopup>().Setup(heal_counter, new Color(129f / 255f, 199f / 255f, 132f / 255f));
 
         heal_counter = 0;
         UpdateUI();
@@ -252,7 +252,7 @@ public class Player : MonoBehaviour
         TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
 
         GameObject shield_popup = Instantiate(popup_prefab, popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
-        shield_popup.GetComponent<DamagePopup>().Setup(shield_counter, Color.blue);
+        shield_popup.GetComponent<DamagePopup>().Setup(shield_counter, new Color(100f / 255f, 181f / 255f, 246f / 255f));
 
         // animation
 

@@ -380,11 +380,8 @@ public static class ShapeColors
 {
     public static readonly Color[] AvailableColors = new Color[]
     {
-        //new Color(0, 145, 255), // blue
-        //new Color(255, 60, 60), // red
-        //new Color(60, 255, 60) // green
-        Color.red,
-        Color.green,
-        Color.blue,
+        new Color(229f/255f, 115f/255f, 115f/255f), // r
+        new Color(129f/255f, 199f/255f, 132f/255f), // g
+        new Color(100f/255f, 181f/255f, 246f/255f) // b
     };
 }

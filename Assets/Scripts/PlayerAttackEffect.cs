@@ -34,7 +34,7 @@ public class PlayerAttackEffect : MonoBehaviour
         FindObjectOfType<CameraShaker>().Shake(isCrit ? 0.35f : 0.25f, isCrit ? 10f : 7f);
 
         GameObject damage_popup = Instantiate(damage_popup_prefab, popup_anchor.position, Quaternion.identity, canvas.transform);
-        damage_popup.GetComponent<DamagePopup>().Setup(damage, isCrit ? Color.red : new Color(255f / 255f, 172f / 255f, 0f / 255f, 1f), isCrit);
+        damage_popup.GetComponent<DamagePopup>().Setup(damage, isCrit ? new Color(229f / 255f, 115f / 255f, 115f / 255f) : new Color(255f / 255f, 172f / 255f, 0f / 255f, 1f), isCrit);
 
         yield return new WaitForSeconds(0.1f);
     }

@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 322ad622f76620440a27c2a8f95126d6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2241777759130377496
+    second: Square_fieldborn_0
+  - first:
+      213: -7702488640651903414
+    second: Square_fieldborn_1
+  - first:
+      213: 4060562105637932965
+    second: Square_fieldborn_2
+  - first:
+      213: -1863422848027385330
+    second: Square_fieldborn_3
+  - first:
+      213: 7266506250645291773
+    second: Square_fieldborn_4
+  - first:
+      213: -2271314326411249997
+    second: Square_fieldborn_5
+  - first:
+      213: 3804261342287246198
+    second: Square_fieldborn_6
+  - first:
+      213: 7163739172696906732
+    second: Square_fieldborn_7
+  - first:
+      213: -7133850077025253162
+    second: Square_fieldborn_8
+  - first:
+      213: 2157073004348557903
+    second: Square_fieldborn_9
+  - first:
+      213: -6335042515847943672
+    second: Square_fieldborn_10
+  - first:
+      213: -6624734705831497910
+    second: Square_fieldborn_11
+  - first:
+      213: -7365018619308370313
+    second: Square_fieldborn_12
+  - first:
+      213: 8115298508606481327
+    second: Square_fieldborn_13
+  - first:
+      213: 3175897918199713259
+    second: Square_fieldborn_14
+  - first:
+      213: -6290517716886403563
+    second: Square_fieldborn_15
+  - first:
+      213: -6090493810310923413
+    second: Square_fieldborn_16
+  - first:
+      213: -4572099375427567411
+    second: Square_fieldborn_17
+  - first:
+      213: 2732104059625109240
+    second: Square_fieldborn_18
+  - first:
+      213: 3641073889020486722
+    second: Square_fieldborn_19
+  - first:
+      213: -4717574215741395204
+    second: Square_fieldborn_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Square_fieldborn_0
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 433
+        width: 647
+        height: 656
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2a9a9610b93e0e0800000000000000
+      internalID: -2241777759130377496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_1
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 415
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e367f04634b1590800000000000000
+      internalID: -7702488640651903414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_2
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 419
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af06f6a8b30a5830800000000000000
+      internalID: 4060562105637932965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_3
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 415
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e022bf4eacac326e0800000000000000
+      internalID: -1863422848027385330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_4
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 418
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df24ed37fe0d7d460800000000000000
+      internalID: 7266506250645291773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_5
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 415
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6700177abaa70e0800000000000000
+      internalID: -2271314326411249997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_6
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 417
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67338c3f8837bc430800000000000000
+      internalID: 3804261342287246198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_7
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 419
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb562c82d6ba6360800000000000000
+      internalID: 7163739172696906732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_8
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 415
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d84406d6297ffc90800000000000000
+      internalID: -7133850077025253162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_9
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 415
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ac7c208767fed10800000000000000
+      internalID: 2157073004348557903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_10
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 416
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80ae2e575686518a0800000000000000
+      internalID: -6335042515847943672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_11
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 419
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f26b762e63014a0800000000000000
+      internalID: -6624734705831497910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_12
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 415
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7769cf756923ac990800000000000000
+      internalID: -7365018619308370313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_13
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 419
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa32fb33ff45f9070800000000000000
+      internalID: 8115298508606481327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_14
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 415
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed4239745e031c20800000000000000
+      internalID: 3175897918199713259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_15
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 415
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5164faf077793b8a0800000000000000
+      internalID: -6290517716886403563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_16
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 419
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6bb3b9f5283a7ba0800000000000000
+      internalID: -6090493810310923413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_17
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 415
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0cad197d3ac80c0800000000000000
+      internalID: -4572099375427567411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_18
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 415
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f67b5bba226ae520800000000000000
+      internalID: 2732104059625109240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_19
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 415
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 244240c2961b78230800000000000000
+      internalID: 3641073889020486722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square_fieldborn_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 415
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe213dde3fc78eb0800000000000000
+      internalID: -4717574215741395204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 687b76961522c53409ef935106ca94c9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Square_fieldborn_0: -2241777759130377496
+      Square_fieldborn_1: -7702488640651903414
+      Square_fieldborn_10: -6335042515847943672
+      Square_fieldborn_11: -6624734705831497910
+      Square_fieldborn_12: -7365018619308370313
+      Square_fieldborn_13: 8115298508606481327
+      Square_fieldborn_14: 3175897918199713259
+      Square_fieldborn_15: -6290517716886403563
+      Square_fieldborn_16: -6090493810310923413
+      Square_fieldborn_17: -4572099375427567411
+      Square_fieldborn_18: 2732104059625109240
+      Square_fieldborn_19: 3641073889020486722
+      Square_fieldborn_2: 4060562105637932965
+      Square_fieldborn_20: -4717574215741395204
+      Square_fieldborn_3: -1863422848027385330
+      Square_fieldborn_4: 7266506250645291773
+      Square_fieldborn_5: -2271314326411249997
+      Square_fieldborn_6: 3804261342287246198
+      Square_fieldborn_7: 7163739172696906732
+      Square_fieldborn_8: -7133850077025253162
+      Square_fieldborn_9: 2157073004348557903
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
