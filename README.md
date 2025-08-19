@@ -19,6 +19,7 @@ Each round consists of alternating turns between the player and the enemy. After
 - Dynamic combat feedback
 - Level-up system for both player and enemies
 - Handcrafted minimalist visual style using only rectangles and squares
+- Item and inventory system
 
 ---
 
@@ -36,7 +37,7 @@ Each round consists of alternating turns between the player and the enemy. After
 - 🧙 Character classes (warrior, archer, mage, maybe other)
 - 🧑‍🦲 Character custom system
 - 🗺️ Node-based world exploration
-- 🛍️ Item system and shop
+- 🛍️ Item buy system (shop)
 - 👁️ Enemy behaviors & patterns
 
 ## *game screenshot*
