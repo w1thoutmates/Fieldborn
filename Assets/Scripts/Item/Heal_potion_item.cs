@@ -4,6 +4,7 @@ using UnityEngine;
 public class Heal_potion_item : Item
 {
     public int heal_value = 5;
+    public AudioClip heal_sound;
 
     public override void ApplyToPlayer(Player pl)
     {
@@ -11,6 +12,7 @@ public class Heal_potion_item : Item
 
         pl.current_health = Mathf.Min(pl.max_health, pl.current_health + heal_value);
         pl.health_bar_instance.UpdateHealthBar(pl.current_health);
+        pl.audio_source.PlayOneShot(heal_sound);
         pl.UpdateHealthBarText();
 
         GameObject heal_popup = Instantiate(pl.popup_prefab, pl.popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
@@ -23,6 +25,7 @@ public class Heal_potion_item : Item
 
         en.current_health = Mathf.Min(en.max_health, en.current_health + heal_value);
         en.health_bar_instance.UpdateHealthBar(en.current_health);
+        en.audio_source.PlayOneShot(heal_sound);
         en.UpdateHealthBarText();
     }
 }

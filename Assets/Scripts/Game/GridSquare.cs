@@ -10,6 +10,14 @@ public class GridSquare : MonoBehaviour
     public int SquareIndex { get; set; }
     public bool SquareOccupied { get; set; }
 
+    [HideInInspector] public AudioSource audio_source;
+    public AudioClip[] click_sounds;
+
+    private void Awake()
+    {
+        audio_source = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         Selected = false;
@@ -24,6 +32,11 @@ public class GridSquare : MonoBehaviour
     public void PlaceShapeOnBoard(Color color)
     {
         ActivateSquare(color);
+        if(click_sounds != null && click_sounds.Length > 0 )
+        {
+            int random_index = Random.Range(0, click_sounds.Length);
+            audio_source.PlayOneShot(click_sounds[random_index]);
+        }
     }
 
     public void ActivateSquare(Color color)

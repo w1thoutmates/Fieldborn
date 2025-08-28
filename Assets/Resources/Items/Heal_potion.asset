@@ -19,3 +19,4 @@ MonoBehaviour:
   item_type: 1
   isDisposable: 1
   heal_value: 5
+  heal_sound: {fileID: 8300000, guid: f811758428bb29f42a4cf25dc8d19141, type: 3}

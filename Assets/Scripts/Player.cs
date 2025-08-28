@@ -25,13 +25,19 @@ public class Player : MonoBehaviour
     private TextMeshProUGUI health_text;
     public Transform popup_anchor;
     public GameObject popup_prefab;
-    [HideInInspector]public health_bar health_bar_instance;
+    [HideInInspector] public health_bar health_bar_instance;
 
     [Header("leveling")]
     public float max_exp;
     public float current_exp = 1;
     public int max_level;
     public int current_level = 1;
+
+    [Header("sounds")]
+    public AudioClip shield_sound;
+    public AudioClip healself_sound;
+    public AudioClip taking_damage_sound;
+    [HideInInspector] public AudioSource audio_source;
 
     private float crit_chance = 0.15f;
     private int crit_multiplier = 2;
@@ -62,6 +68,8 @@ public class Player : MonoBehaviour
             Debug.LogWarning("damage_text or heal_text or shield_text isn't identity");
             return;
         }
+
+        audio_source = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -125,6 +133,7 @@ public class Player : MonoBehaviour
         UpdateUI();
         health_bar_instance?.UpdateHealthBar(current_health);
         UpdateHealthBarText();
+        audio_source.PlayOneShot(taking_damage_sound);
 
         if (current_health <= 0) Die();
 
@@ -138,6 +147,7 @@ public class Player : MonoBehaviour
         UpdateUI();
         health_bar_instance?.UpdateHealthBar(current_health);
         UpdateHealthBarText();
+        audio_source.PlayOneShot(taking_damage_sound);
 
         if (current_health <= 0)
         {
@@ -229,6 +239,7 @@ public class Player : MonoBehaviour
         TurnManager.instance.turn_text.text = $"<size=80%>Игрок лечится</size>";
         TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
 
+        audio_source.PlayOneShot(healself_sound);
         current_health = Mathf.Min(max_health, current_health + heal_counter);
         health_bar_instance.UpdateHealthBar(current_health);
         UpdateHealthBarText();
@@ -251,6 +262,7 @@ public class Player : MonoBehaviour
         TurnManager.instance.turn_text.text = $"<size=80%>Применяется щит</size>";
         TurnManager.instance.turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
 
+        audio_source.PlayOneShot(shield_sound);
         GameObject shield_popup = Instantiate(popup_prefab, popup_anchor.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
         shield_popup.GetComponent<DamagePopup>().Setup(shield_counter, new Color(100f / 255f, 181f / 255f, 246f / 255f));
 

@@ -4,6 +4,7 @@ public class Ork_enemy : Base_enemy
 {
     protected override void Awake()
     {
+        base.Awake();
         if (damage_counter_text == null)
         {
             Debug.LogWarning("damage_text isn't identity for enemy");

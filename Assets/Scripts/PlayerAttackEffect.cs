@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public class PlayerAttackEffect : MonoBehaviour
@@ -10,12 +11,15 @@ public class PlayerAttackEffect : MonoBehaviour
     public Transform anchor_position;
     public float delay_before_damage = 0f;
     public bool isPlayer;
+    public AudioClip[] slashes;
 
     private Canvas canvas;
+    private AudioSource audio_source;
 
     private void Awake()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        audio_source = this.GetComponent<AudioSource>();
     }
 
     public IEnumerator PlayAttack(int damage, bool isCrit)
@@ -23,6 +27,12 @@ public class PlayerAttackEffect : MonoBehaviour
         if (PauseManager.isPaused)
         {
             yield return new WaitWhile(() => PauseManager.isPaused);
+        }
+
+        if (slashes != null && slashes.Length > 0)
+        {
+            int random_index = Random.Range(0, slashes.Length);
+            audio_source.PlayOneShot(slashes[random_index]);
         }
 
         GameObject slash = Instantiate(slash_effect_prefab, anchor_position.position,

@@ -288,6 +288,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public void OnPointerClick(PointerEventData eventData)
     {
         if (PauseManager.isPaused) return;
+        SoundEffectStorage.instance.audio_source.PlayOneShot(SoundEffectStorage.instance.pop_sound);
     }
     
     public void OnPointerUp(PointerEventData eventData)
@@ -304,7 +305,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         }
 
         if (!TurnManager.instance.IsPlayerTurn()) return;
-        if (!Player.instance.CanPlaceShape()) return;     
+        if (!Player.instance.CanPlaceShape()) return;
+
+        SoundEffectStorage.instance.audio_source.PlayOneShot(SoundEffectStorage.instance.pop_sound);
 
         this.GetComponent<RectTransform>().localScale = shapeSelectedScale;
     }
@@ -352,6 +355,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private void MoveShapeToStartPosition()
     {
         transform.transform.localPosition = startPosition;
+        SoundEffectStorage.instance.audio_source.PlayOneShot(SoundEffectStorage.instance.deny_sound);
     }
 
     private void AssignRandomColor()

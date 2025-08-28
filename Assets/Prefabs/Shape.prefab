@@ -52,3 +52,5 @@ MonoBehaviour:
   shapeSelectedScale: {x: 0.7, y: 0.7, z: 0.7}
   offset: {x: 0, y: 590}
   currentShapeData: {fileID: 11400000, guid: 646b9f15e65c8674d82955e959fd07e0, type: 2}
+  audio_source: {fileID: 0}
+  pop_sound: {fileID: 8300000, guid: 20f6d20f8ea3d7640a75a8fc5e7d6e65, type: 3}

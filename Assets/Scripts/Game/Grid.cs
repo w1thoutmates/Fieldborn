@@ -244,6 +244,7 @@ public class Grid : MonoBehaviour
                     // Give possible for player to select the counter++
                 }
 
+                SoundEffectStorage.instance.audio_source.PlayOneShot(SoundEffectStorage.instance.success_sound);
                 completedLines.Add(line);
             }
         }

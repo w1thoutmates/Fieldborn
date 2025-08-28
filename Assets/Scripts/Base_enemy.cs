@@ -27,7 +27,11 @@ public abstract class Base_enemy : MonoBehaviour
     protected float crit_chance = 0.10f;
     protected int crit_multiplier = 2;
 
-    protected virtual void Awake() { }
+    [Header("sounds")]
+    public AudioClip taking_damage_sound;
+    [HideInInspector] public AudioSource audio_source;
+
+    protected virtual void Awake() { audio_source = GetComponent<AudioSource>(); }
 
     protected virtual void Start()
     {
@@ -92,6 +96,8 @@ public abstract class Base_enemy : MonoBehaviour
             UpdateHealthBarText();
         }
 
+        audio_source.PlayOneShot(taking_damage_sound);
+
         if (current_health <= 0)
         {
             current_health = 0;
@@ -107,6 +113,8 @@ public abstract class Base_enemy : MonoBehaviour
         UpdateUI();
         health_bar_instance?.UpdateHealthBar(current_health);
         UpdateHealthBarText();
+
+        audio_source.PlayOneShot(taking_damage_sound);
 
         if (current_health <= 0)
         {
@@ -153,9 +161,10 @@ public abstract class Base_enemy : MonoBehaviour
 
         if (crit) damage *= crit_multiplier;
 
-        int final_damage = Player.instance.TakeDamage(damage);
+        if (effect != null) 
+            yield return StartCoroutine(effect.PlayAttack(damage, crit));
 
-        if (effect != null) yield return StartCoroutine(effect.PlayAttack(final_damage, crit));
+        int final_damage = Player.instance.TakeDamage(damage);
 
         UpdateUI();
 
@@ -176,7 +185,6 @@ public abstract class Base_enemy : MonoBehaviour
     {
         health_text.text = current_health.ToString() + "/" + max_health.ToString();
     }
-
 
       // В будущем добавить логику предметов:
      // foreach(var item in items) item.ApplyEffect(); (с задержкой)
