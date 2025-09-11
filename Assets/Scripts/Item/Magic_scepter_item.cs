@@ -53,7 +53,7 @@ public class Magic_scepter_item : Item, ICooldownable
             fadeOut: false   
         ).SetLoops(-1, LoopType.Restart);
 
-        yield return UIZoomManager.instance.StartCoroutine(UIZoomManager.instance.Zoom(1.01f, 1.35f));
+        yield return UIZoomManager.instance.StartCoroutine(UIZoomManager.instance.Zoom(1.02f, 1.35f));
 
         GameObject missile = Instantiate(
             magic_missile_prefab,
