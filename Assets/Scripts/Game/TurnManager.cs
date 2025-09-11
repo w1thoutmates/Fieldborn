@@ -116,6 +116,12 @@ public class TurnManager : MonoBehaviour
         Debug.Log("<color=yellow> ŒÕ≈÷ –¿”Õƒ¿</color>");
         yield return new WaitForSeconds(1f);
 
+        //enenmy shield
+        if(enemy is IShieldable shieldable_enemy)
+        {
+            yield return StartCoroutine(shieldable_enemy.CastShield());
+        }
+
         // player attack
         yield return StartCoroutine(Player.instance.Attack(enemy));
 
@@ -127,6 +133,12 @@ public class TurnManager : MonoBehaviour
 
         // player heal
         yield return StartCoroutine(Player.instance.HealSelf());
+
+        // enemy heal
+        if(enemy is IHealable healable_enemy)
+        {
+            yield return StartCoroutine(healable_enemy.HealSelf());
+        }
 
         // temp
         Player.instance.shield_counter = 0;

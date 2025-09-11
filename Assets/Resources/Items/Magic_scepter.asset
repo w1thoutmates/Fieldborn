@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62a11977218ec4980942cb65a7d8fb, type: 3}
+  m_Name: Magic_scepter
+  m_EditorClassIdentifier: 
+  name: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u0441\u043A\u0438\u043F\u0435\u0442\u0440"
+  description: "\u041A\u0430\u0436\u0434\u044B\u0435 2 \u0445\u043E\u0434\u0430 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+    \u043F\u0440\u043E\u0438\u0437\u043D\u043E\u0441\u0438\u0442 \u043C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+    \u0441\u043D\u0430\u0440\u044F\u0434, \u043D\u0430\u0446\u0435\u043B\u0435\u043D\u043D\u044B\u0439
+    \u043D\u0430 \u0437\u0430\u043D\u044F\u0442\u0443\u044E \u043A\u043B\u0435\u0442\u043A\u0443,
+    \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0440\u0430\u0437\u0440\u0443\u0448\u0430\u0435\u0442
+    \u0438 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u0441\u0438\u043B\u0443
+    \u0446\u0432\u0435\u0442\u0430 \u0440\u0430\u0437\u0440\u0443\u0448\u0435\u043D\u043D\u043E\u0439
+    \u043A\u043B\u0435\u0442\u043A\u0438."
+  icon: {fileID: 5630984836055003918, guid: 277e248793d7cbe47a5586ab2e3c5a06, type: 3}
+  item_type: 0
+  item_quality: 3
+  isDisposable: 0
+  magic_missile_sound: {fileID: 8300000, guid: 9b6d3e747d398cf468bfb97d5595d0ab, type: 3}
+  magic_missile_prefab: {fileID: 1699436102757007779, guid: da53860d7b39de74bad99f5efa658d54, type: 3}

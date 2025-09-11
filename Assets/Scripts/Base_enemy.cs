@@ -4,6 +4,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+public interface IHealable
+{
+    IEnumerator HealSelf();
+}
+
+public interface IShieldable
+{
+    IEnumerator CastShield();
+}
+
+
 public abstract class Base_enemy : MonoBehaviour
 {
     [Header("counters")]
@@ -31,7 +42,17 @@ public abstract class Base_enemy : MonoBehaviour
     public AudioClip taking_damage_sound;
     [HideInInspector] public AudioSource audio_source;
 
-    protected virtual void Awake() { audio_source = GetComponent<AudioSource>(); }
+    [Header("other")]
+    public Transform hand_anchor_pos;
+    [HideInInspector] public Inventory inventory;
+    private GameObject shapes_on_scene;
+
+    protected virtual void Awake() 
+    {
+        inventory = GetComponent<Inventory>();
+        audio_source = GetComponent<AudioSource>();
+        shapes_on_scene = GameObject.Find("Shapes");
+    }
 
     protected virtual void Start()
     {
@@ -85,7 +106,7 @@ public abstract class Base_enemy : MonoBehaviour
         damage_counter_text.text = damage_counter.ToString();
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual int TakeDamage(float damage)
     {
         current_health -= damage;
         UpdateUI();
@@ -105,6 +126,8 @@ public abstract class Base_enemy : MonoBehaviour
         }
 
         EventBus.Instance.enemyTakenDamage?.Invoke((int)damage);
+
+        return (int)damage;
     }
 
     public virtual void TakePureDamage(float damage)
@@ -130,12 +153,12 @@ public abstract class Base_enemy : MonoBehaviour
         Debug.Log("Враг походил");
         StartCoroutine(EnemyTurnDelay());
     }
-    private IEnumerator EnemyTurnDelay()
+
+    public IEnumerator EnemyTurnDelay()
     {
         if (PauseManager.isPaused)
             yield return new WaitWhile(() => PauseManager.isPaused);
 
-        GameObject shapes_on_scene = GameObject.Find("Shapes");
         shapes_on_scene.gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         shapes_on_scene.gameObject.SetActive(true);

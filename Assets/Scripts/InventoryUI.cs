@@ -66,23 +66,30 @@ public class InventoryUI : MonoBehaviour
             if (slot_bg != null)
                 slot_bg.sprite = empty_slot_image;
 
-            Image item_icon = slotGO.transform.Find("item_icon")?.GetComponent<Image>();
-            if (item_icon == null)
-            {
-                Debug.LogError("Префаб должен содержать Image с именем item_icon");
-                continue;
-            }
+            //Image item_icon = slotGO.transform.Find("item_icon")?.GetComponent<Image>();
+            //if (item_icon == null)
+            //{
+            //    Debug.LogError("Префаб должен содержать Image с именем item_icon");
+            //    continue;
+            //}
 
+            //if (item_index < inventory.items.Length && inventory.items[item_index] != null)
+            //{
+            //    item_icon.sprite = inventory.items[item_index].icon;
+            //    item_icon.color = Color.white;
+            //}
+            //else
+            //{
+            //    item_icon.sprite = null;
+            //    item_icon.color = new Color(1, 1, 1, 0);
+            //}
+
+            Sprite sprite = null;
             if (item_index < inventory.items.Length && inventory.items[item_index] != null)
-            {
-                item_icon.sprite = inventory.items[item_index].icon;
-                item_icon.color = Color.white;
-            }
-            else
-            {
-                item_icon.sprite = null;
-                item_icon.color = new Color(1, 1, 1, 0);
-            }
+                sprite = inventory.items[item_index].icon;
+
+            var slotUI = slotGO.AddComponent<ItemSlotUI>();
+            slotUI.Init(this, item_index, sprite);
         }
 
         left_arrow.interactable = current_index > 0;

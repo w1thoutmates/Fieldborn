@@ -1,10 +1,15 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum CellType { Damage, Heal, Shield }
 
 public class GridSquare : MonoBehaviour
 {
     public Image hoverImage;
     public Image activeImage;
+
+    public CellType cellType;
 
     public bool Selected { get; set; }
     public int SquareIndex { get; set; }
@@ -31,6 +36,13 @@ public class GridSquare : MonoBehaviour
 
     public void PlaceShapeOnBoard(Color color)
     {
+        if (color == new Color(229f / 255f, 115f / 255f, 115f / 255f)) // red
+            cellType = CellType.Damage;
+        else if (color == new Color(129f / 255f, 199f / 255f, 132f / 255f)) // green
+            cellType = CellType.Heal;
+        else if (color == new Color(100f / 255f, 181f / 255f, 246f / 255f)) // blue
+            cellType = CellType.Shield;
+
         ActivateSquare(color);
         if(click_sounds != null && click_sounds.Length > 0 )
         {
@@ -105,4 +117,15 @@ public class GridSquare : MonoBehaviour
             collision.GetComponent<ShapeSquare>().UnSetOccupied();
         }
     }
+
+    public void ShakeIncreasing(float duration, float start_strength, float end_strength)
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOShakePosition(duration * 0.5f, start_strength));
+
+        seq.Append(transform.DOShakePosition(duration * 0.5f, end_strength));
+    }
+
+   
 }

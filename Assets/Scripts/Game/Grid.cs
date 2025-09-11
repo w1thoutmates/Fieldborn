@@ -471,4 +471,13 @@ public class Grid : MonoBehaviour
 
         Destroy(animated_square);
     }
+
+    public GridSquare GetRandomOccupiedCell()
+    {
+        var occupied_cells = cells.Select(c => c.GetComponent<GridSquare>()).Where(sq => sq.SquareOccupied).ToList();
+
+        if (occupied_cells.Count == 0) return null;
+
+        return occupied_cells[UnityEngine.Random.Range(0, occupied_cells.Count)];
+    }
 }
