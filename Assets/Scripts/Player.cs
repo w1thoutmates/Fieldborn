@@ -270,6 +270,8 @@ public class Player : MonoBehaviour
 
         /* yield return new WaitForSeconds(0.5f); delay for animation */
 
+        // i hate my life(
+
         active_shield = shield_counter;
         shield_counter = 0;
         UpdateUI();

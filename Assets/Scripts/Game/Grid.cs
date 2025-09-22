@@ -120,9 +120,9 @@ public class Grid : MonoBehaviour
                 }
             }
 
-            if (shapeLeft == 0 && Player.instance.CanPlaceShape())
+            if (shapeLeft == 0 && Player.instance.CanPlaceShape() && !AnyShapeBeingDragged())
             {
-                GameEvents.RequestNewShapes();
+                StartCoroutine(RequestNewShapesWithDelay());
             }
             else
             {
@@ -418,7 +418,7 @@ public class Grid : MonoBehaviour
         StartCoroutine(ClearBoardWithDelay());
     }
 
-    private IEnumerator ClearBoardWithDelay()
+    public IEnumerator ClearBoardWithDelay()
     {
         if (PauseManager.isPaused)
             yield return new WaitWhile(() => PauseManager.isPaused);
@@ -479,5 +479,25 @@ public class Grid : MonoBehaviour
         if (occupied_cells.Count == 0) return null;
 
         return occupied_cells[UnityEngine.Random.Range(0, occupied_cells.Count)];
+    }
+
+    private bool AnyShapeBeingDragged()
+    {
+        foreach (var shape in shapeStorage.shapeList)
+        {
+            if (shape != null && shape.IsBeingDragged())
+                return true;
+        }
+        return false;
+    }
+
+    private IEnumerator RequestNewShapesWithDelay()
+    {
+        yield return null;
+
+        if (!AnyShapeBeingDragged())
+        {
+            GameEvents.RequestNewShapes();
+        }
     }
 }

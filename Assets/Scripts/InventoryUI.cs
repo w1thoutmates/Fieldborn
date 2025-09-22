@@ -51,7 +51,7 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         foreach (Transform child in inv_slot_container)
             Destroy(child.gameObject);
@@ -85,11 +85,31 @@ public class InventoryUI : MonoBehaviour
             //}
 
             Sprite sprite = null;
+            //bool isInteractable = false;
+
             if (item_index < inventory.items.Length && inventory.items[item_index] != null)
+            {
                 sprite = inventory.items[item_index].icon;
+                //if (inventory.items[item_index] is ICooldownable cooldownable)
+                //{
+                //    isInteractable = cooldownable.isReady();
+                //}
+                //else
+                //{
+                //    isInteractable = inventory.items[item_index].item_type == ItemType.Active;
+                //}
+            }
 
             var slotUI = slotGO.AddComponent<ItemSlotUI>();
             slotUI.Init(this, item_index, sprite);
+            //Button slotButton = slotGO.AddComponent<Button>();
+            //Image slotImage = slotGO.GetComponent<Image>();
+            //slotButton.targetGraphic = slotImage;
+            //if (slotButton != null)
+            //{
+            //    int index = item_index;
+            //    slotButton.onClick.AddListener(() => UsePlayerItem(index - current_index));
+            //}
         }
 
         left_arrow.interactable = current_index > 0;
@@ -109,6 +129,8 @@ public class InventoryUI : MonoBehaviour
 
         if (item.item_type == ItemType.Active)
         {
+            if (item is ICooldownable cooldownable && !cooldownable.isReady()) return;
+
             item.ApplyToPlayer(Player.instance);
             Debug.Log($"Использован предмет: {item.name}");
 

@@ -11,6 +11,14 @@ public class Inventory : MonoBehaviour
     {
         pl = GetComponent<Player>();
         en = GetComponent<Base_enemy>();
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                items[i] = Instantiate(items[i]);
+            }
+        }
     }
 
     private void Start()
@@ -26,5 +34,15 @@ public class Inventory : MonoBehaviour
                 item.ApplyToEnemy(en);
             }
         }
+    }
+
+    public bool HasDisableClearBoardItem()
+    {
+        foreach (Item item in items)
+        {
+            if (item is Clear_board_disabler clearBoardDisabler && clearBoardDisabler.disable_clear_board)
+                return true;
+        }
+        return false;
     }
 }

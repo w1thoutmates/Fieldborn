@@ -19,10 +19,10 @@ public class TurnManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI round_text;
     public TextMeshProUGUI turn_text;
+    public InventoryUI inventoryUI;
 
     [HideInInspector]public bool IsPlayerTurn() => currentTurn % 2 == 1;
     [HideInInspector]public bool IsEnemyTurn() => currentTurn % 2 == 0;
-
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class TurnManager : MonoBehaviour
 
     public void StartNewRound()
     {
-        if (currentRound % 2 == 0)
+        if (currentRound % 2 == 0 && !Player.instance.gameObject.GetComponent<Inventory>().HasDisableClearBoardItem())
         {
             Grid.instance.ClearBoard();
         }
@@ -62,6 +62,20 @@ public class TurnManager : MonoBehaviour
 
         endTunrBtn.gameObject.SetActive(false);
 
+        if(IsPlayerTurn())
+        {
+            var inv = Player.instance.GetComponent<Inventory>();
+            foreach (Item item in inv.items)
+            {
+                if (item is ICooldownable cooldownable)
+                {
+                    cooldownable.TickCooldown();
+                }
+            }
+
+            if (inventoryUI != null) inventoryUI.UpdateUI();
+        }
+
         currentTurn++;
         
         if(currentTurn > turnsPerRound)
@@ -75,8 +89,8 @@ public class TurnManager : MonoBehaviour
     }
 
     private void StartCurrentTurn()
-    {
-        if(IsPlayerTurn())
+    { 
+        if (IsPlayerTurn())
         {
             turn_text.text = $"Ход игрока {GetPlayerTurnNumber()}";
             turn_text.color = new Color(149f / 255f, 255f / 255f, 140f / 255f, 1f);
@@ -95,7 +109,12 @@ public class TurnManager : MonoBehaviour
         Player.instance.StartTurn();
         shapeStorage.RequestNewShapes();
         endTunrBtn.gameObject.SetActive(true);
-        Player.instance.TurnActions();  
+        Player.instance.TurnActions();
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+        }
     }
 
     private void EnemyTurnStart()

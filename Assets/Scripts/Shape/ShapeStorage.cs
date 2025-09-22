@@ -3,10 +3,18 @@ using System.Collections.Generic;
 
 public class ShapeStorage : MonoBehaviour
 {
+    public static ShapeStorage instance;
+
     public List<ShapeData> shapeData;
     public List<Shape> shapeList;
 
     private int lastShapeIndex = -1;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -67,5 +75,10 @@ public class ShapeStorage : MonoBehaviour
         lastShapeIndex = index;
 
         return index;
+    }
+
+    public ShapeData GetRandomShapeData()
+    {
+        return shapeData[Random.Range(0, shapeData.Count)];
     }
 }

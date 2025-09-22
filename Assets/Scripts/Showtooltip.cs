@@ -33,7 +33,7 @@ public class Showtooltip : MonoBehaviour
             out localPoint
         );
 
-        Vector2 targetPosition = localPoint + Vector2.up * 225f;
+        Vector2 targetPosition = localPoint + Vector2.up * 250f;
         rect.anchoredPosition = targetPosition;
 
         Vector2 tooltipSize = rect.sizeDelta;

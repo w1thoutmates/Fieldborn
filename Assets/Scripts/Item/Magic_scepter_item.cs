@@ -45,6 +45,8 @@ public class Magic_scepter_item : Item, ICooldownable
 
         var cell_start_transform = cell.transform.position;
 
+        cell.Highlight_switch(true);
+
         Tweener shake_tween = cell.transform.DOShakePosition(
             duration: 1.3f,   
             strength: 3f,
@@ -89,6 +91,7 @@ public class Magic_scepter_item : Item, ICooldownable
         cell.ClearOccupied();
         GameObject.Instantiate(particles, cell.transform.position, Quaternion.identity).GetComponent<SquareExplosionEffect>().Play(cell.activeImage.color);
 
+        cell.Highlight_switch(false);
         shake_tween.Kill();
         cell.transform.position = cell_start_transform;
 
@@ -117,10 +120,10 @@ public class Magic_scepter_item : Item, ICooldownable
 
         */
         float duration = 0.3f;
-        float arcHeight = 1.5f;
+        float arc_height = 1.5f;
 
-        Vector3 midPoint = (missile.transform.position + target_pos) / 2 + Vector3.up;
-        Vector3[] path = new Vector3[] { missile.transform.position, midPoint, target_pos };
+        Vector3 mid_point = (missile.transform.position + target_pos) / 2 + Vector3.up;
+        Vector3[] path = new Vector3[] { missile.transform.position, mid_point, target_pos };
 
         missile.transform.DOPath(
             path: path,

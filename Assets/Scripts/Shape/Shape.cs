@@ -25,6 +25,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private bool shapeActive = true;
     private int lastColorIndex = -1;
 
+    private bool isDragging = false;
+    private const float StartPositionEpsilon = 1f;
+
     public void Awake()
     {
         shapeStartScale = this.GetComponent<RectTransform>().localScale;
@@ -41,9 +44,15 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         ApplyColorToShape();
     }
 
+    public bool IsBeingDragged()
+    {
+        return isDragging;
+    }
+
     public bool IsOnStartPosition()
     {
-        return transform.localPosition == startPosition;
+        return Vector2.Distance(transform.localPosition, startPosition) <= StartPositionEpsilon;
+        //return transform.localPosition == startPosition;
     }
 
     public bool IsAnyOfShapeSquareActive()
@@ -294,6 +303,8 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public void OnPointerUp(PointerEventData eventData)
     {
         if (PauseManager.isPaused) return;
+
+        isDragging = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -306,6 +317,8 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
         if (!TurnManager.instance.IsPlayerTurn()) return;
         if (!Player.instance.CanPlaceShape()) return;
+
+        isDragging = true;
 
         SoundEffectStorage.instance.audio_source.PlayOneShot(SoundEffectStorage.instance.pop_sound);
 
@@ -337,6 +350,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     {
         if (PauseManager.isPaused) return;
 
+        isDragging = false;
         this.GetComponent<RectTransform>().localScale = shapeStartScale;
 
         //GameEvents.MoveShapeToStartPosition();

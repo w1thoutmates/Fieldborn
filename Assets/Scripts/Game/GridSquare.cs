@@ -8,6 +8,7 @@ public class GridSquare : MonoBehaviour
 {
     public Image hoverImage;
     public Image activeImage;
+    public Image highlightImage;
 
     public CellType cellType;
 
@@ -127,5 +128,5 @@ public class GridSquare : MonoBehaviour
         seq.Append(transform.DOShakePosition(duration * 0.5f, end_strength));
     }
 
-   
+    public void Highlight_switch(bool flag) { highlightImage.gameObject.SetActive(flag); }   
 }

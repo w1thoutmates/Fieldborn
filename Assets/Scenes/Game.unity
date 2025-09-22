@@ -1497,6 +1497,7 @@ MonoBehaviour:
   endTunrBtn: {fileID: 2144647004}
   round_text: {fileID: 1614848323}
   turn_text: {fileID: 822876527}
+  inventoryUI: {fileID: 1229083819}
 --- !u!4 &270879321
 Transform:
   m_ObjectHideFlags: 0
@@ -3961,6 +3962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 8dbd701e09b22184ea6dfc6ac96557b1, type: 2}
+  - {fileID: 11400000, guid: ebe98af40485e5d4cbfe96ebc648904a, type: 2}
+  - {fileID: 11400000, guid: bf9b20259e50a4f43bd1554fdc0a967e, type: 2}
 --- !u!82 &802681034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7050,7 +7053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8937084138784817843, guid: ff421256f1d65fb4e9e4b35e4043f592, type: 3}
       propertyPath: m_Name
-      value: Shape (2)
+      value: RightShape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8145,7 +8148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8937084138784817843, guid: ff421256f1d65fb4e9e4b35e4043f592, type: 3}
       propertyPath: m_Name
-      value: Shape (1)
+      value: LeftShape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10432,7 +10435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8937084138784817843, guid: ff421256f1d65fb4e9e4b35e4043f592, type: 3}
       propertyPath: m_Name
-      value: Shape
+      value: MidShape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
