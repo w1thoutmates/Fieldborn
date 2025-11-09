@@ -1,7 +1,7 @@
 # Fieldborn
  A turn-based rogue-like puzzle where you fight enemies by building lines with block-shaped pieces on a tactical grid.
 
- and you can try it:
+ and you can try prototype of it:
  
  [![Download](https://img.shields.io/badge/Download-Demo-blue)](https://github.com/w1thoutmates/Fieldborn/releases/tag/v1.0.1/Fieldborn_demo.v1.0.1.rar)
  
@@ -36,7 +36,7 @@ Each round consists of alternating turns between the player and the enemy. After
 
 ---
 
-## 🚧 In Development
+## 🚧 In Development (Development is freezed)
 
 - 🧙 Character classes (warrior, archer, mage, maybe other)
 - 🧑‍🦲 Character custom system
