@@ -3,7 +3,7 @@
 
  and you can try prototype of it:
  
- [![Download](https://img.shields.io/badge/Download-Demo-blue)](https://github.com/w1thoutmates/Fieldborn/releases/tag/v1.0.1/Fieldborn_demo.v1.0.1.rar)
+ [![Download](https://img.shields.io/badge/Download-Demo-blue)](https://github.com/w1thoutmates/Fieldborn/releases/tag/prototype_v1.0/Fieldborn_prototype.rar)
  
 ---
  
